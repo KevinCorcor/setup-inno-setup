@@ -1,0 +1,22 @@
+name: 'Install InnoSetup'
+description: 'cross platform action for installing innosetup'
+runs:
+  using: 'composite'
+  steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+      run: |
+        if [ "${{ matrix.os }}" == "ubuntu-latest" ]; then
+          sudo apt-get update
+          sudo apt-get install innosetup -y
+        elif [ "${{ matrix.os }}" == "windows-latest" ]; then
+          choco install innosetup -y
+        elif [ "${{ matrix.os }}" == "macOS-latest" ]; then
+          brew install innosetup
+        fi
+
+    # - run: innosetup-compiler --version
+
+branding:
+  icon: package
+  color: blue
