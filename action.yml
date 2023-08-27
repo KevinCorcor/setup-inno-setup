@@ -3,7 +3,7 @@ description: 'cross platform action for installing innosetup'
 runs:
   using: 'composite'
   steps:
-    - id: install inno
+    - id: installinno
       shell: bash
       run: |
           sudo apt-get update
